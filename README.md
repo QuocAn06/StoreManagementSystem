@@ -22,45 +22,54 @@ Hệ thống hỗ trợ quản lý bán hàng, nhập hàng, tồn kho, thống 
 - **Auth**: ASP.NET Identity
 - **Chart**: Chart.js
 
+## ERD (Entity Relationship Diagram)
+```
+	Users ───< Orders ───< OrderDetails >─── Books >─── Categories
+                               ^
+                               |
+                         ImportDetails >─── ImportReceipts >─── Suppliers
+```
+
+![EntityRelationshipDiagram](https://drive.google.com/file/d/1qaJwA6UoRvdQeFoF6k6TffDoSoCXtleF/view?usp=sharing)
+
 ## Cấu trúc dự án
 ```
-StoreManagementSystem/
-├── Controllers/          # Controllers xử lý request
-├── Models/               # Models & ViewModels
-├── Data/                 # DbContext & Seed Data
-├── Services/             # Business logic
-├── Hubs/                 # SignalR Hubs
-├── Views/                # Razor Views
-├── wwwroot/              # Static files
-├── appsettings.json      # Cấu hình ứng dụng
-├── Program.cs            # Entry point của ứng dụng
-├── StoreManagementSystem.csproj
+	StoreManagementSystem/
+	├── Controllers/          # Controllers xử lý request
+	├── Models/               # Models & ViewModels
+	├── Data/                 # DbContext & Seed Data
+	├── Services/             # Business logic
+	├── Hubs/                 # SignalR Hubs
+	├── Views/                # Razor Views
+	├── wwwroot/              # Static files
+	├── appsettings.json      # Cấu hình ứng dụng
+	├── Program.cs            # Entry point của ứng dụng
+	├── StoreManagementSystem.csproj
 ```
 
 ## ⚙️ Cách chạy dự án local
 ### 1. Clone repository:
-   ```
-	   git clone https://github.com/username/StoreManagementSystem.git
+```
+   git clone https://github.com/username/StoreManagementSystem.git
 	   cd StoreManagementSystem
-
-   ```
+```
 
 ### 2. Cấu hình chuỗi kết nối SQL Server trong appsettings.json:
-	```
+```
 		"ConnectionStrings": {
 		  "DefaultConnection": "Server=YOUR_SERVER;Database=StoreDB;Trusted_Connection=True;"
 		}
-	```
+```
 
 ### 3. Chạy migration & seed data:
-	```
+```
 		dotnet ef database update
-	```
+```
 
 ### 4. Chạy ứng dụng:
-	```
+```
 		dotnet run
-	```
+```
 
 ### 5. Truy cập: https://localhost:5001
 
